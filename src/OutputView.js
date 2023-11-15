@@ -32,6 +32,11 @@ const OutputView = {
         for (let i = 0; i < benefits.length; i += 1) {
             Console.print(`${benefits[i][0]}: -${utils.getMoneyString(benefits[i][1])}원`);
         }
+    },
+
+    printBenefitPrice(price) {
+        Console.print('<총혜택 금액>');
+        Console.print(`${utils.getMoneyString(price)}원`);
     }
 }
 

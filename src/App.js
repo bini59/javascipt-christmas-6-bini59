@@ -40,6 +40,11 @@ class App {
     OutputView.printBenefit(benefits);
   }
 
+  printBenefitPrice() {
+    const benefitPrice = this.#model.getTotalBenefitPrice();
+    OutputView.printBenefitPrice(benefitPrice);
+  }
+
   async run() {
     await this.inputDate();
     await this.inputMenus();
@@ -50,6 +55,7 @@ class App {
     this.printTotalPrice();
     this.printGiveaway();
     this.printBenefit();
+    this.printBenefitPrice();
   }
 }
 
