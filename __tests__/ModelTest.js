@@ -23,7 +23,7 @@ describe('Model 테스트', () => {
     const model = new Model();
     model.setMenus('타파스-1,제로콜라-1,레드와인-3');
 
-    expect(model.getGiveaway()).toEqual(['샴페인', '1개']);
+    expect(model.getGiveaway()).toEqual(['샴페인', '1']);
   });
 
 });

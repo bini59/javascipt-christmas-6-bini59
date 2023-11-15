@@ -30,14 +30,20 @@ class App {
     OutputView.printTotalPrice(totalPrice);
   }
 
+  printGiveaway() {
+    const giveaway = this.#model.getGiveaway();
+    OutputView.printGiveaway(giveaway);
+  }
+
   async run() {
     await this.inputDate();
     await this.inputMenus();
 
     const menus = this.#model.getMenus();
     OutputView.printMenu(menus);
-    
+
     this.printTotalPrice();
+    this.printGiveaway();
   }
 }
 

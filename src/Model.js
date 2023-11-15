@@ -58,7 +58,7 @@ class Model {
     }
 
     if (this.#totalPrice >= 120000) {
-      this.#giveaway = ['샴페인', '1개'];
+      this.#giveaway = ['샴페인', '1'];
     }
   }
 

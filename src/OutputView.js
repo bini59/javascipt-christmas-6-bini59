@@ -12,6 +12,15 @@ const OutputView = {
     printTotalPrice(totalPrice) {
         Console.print('<할인 전 총주문 금액>');
         Console.print(`${utils.getMoneyString(totalPrice)}원`);
+    },
+
+    printGiveaway(giveaway) {
+        Console.print('<증정 메뉴>');
+        if (giveaway === undefined) {
+            Console.print('없음');
+            return;
+        }
+        Console.print(`${giveaway[0]} ${giveaway[1]}개`);
     }
 }
 
