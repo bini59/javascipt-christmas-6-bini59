@@ -152,6 +152,10 @@ class Model {
     this.#calculateTotalBenefitPrice();
     return this.#totalBenefitPrice;
   }
+
+  getTotalPriceWithBenefit() {
+    return this.#totalPrice - this.#totalBenefitPrice;
+  }
 }
 
 export default Model;
