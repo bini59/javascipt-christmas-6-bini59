@@ -12,6 +12,18 @@ class Model {
     this.#date = date;
     return true;
   } 
+
+  setMenus(menus) {
+    if (!Validator.menuValidate(menus)) {
+      return false;
+    }
+    const menuList = menus.split(',');
+    for(let i = 0; i < menuList.length; i+=1) {
+      menuList[i] = menuList[i].split('-');      
+    }
+    this.#menus = menuList;
+    return true;
+  }
 }
 
 export default Model;

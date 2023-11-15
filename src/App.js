@@ -16,12 +16,17 @@ class App {
   }
 
   async inputMenus() {
-    const menus = await InputView.readMenus();
+    let menus = await InputView.readMenus();
+    if (!this.#model.setMenus(menus)) {
+      errhandler.inputMenuError();
+      menus = await this.inputMenus();
+    }
     return menus;
   }
 
   async run() {
     await this.inputDate();
+    await this.inputMenus();
   }
 }
 
