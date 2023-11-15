@@ -39,7 +39,7 @@
 - [ ] #평일 할인 및 적용 method
 - [ ] #주말 할인 및 적용 method
 - [ ] #특별 할인 및 적용 method
-- [ ] #증정 메뉴 method
+- [x] #증정 메뉴 method
 - [ ] #이벤트 배지 method
 
 - [x] (get) 총 주문 금액

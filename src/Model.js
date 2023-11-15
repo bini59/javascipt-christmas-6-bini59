@@ -8,6 +8,8 @@ class Model {
 
   #totalPrice;
 
+  #giveaway;
+
   setDate(date) {
     if (!Validator.dateValidate(date)) {
       return false;
@@ -46,6 +48,18 @@ class Model {
   getTotalPrice() {
     this.#calculateTotalPrice();
     return this.#totalPrice;
+  }
+
+
+  // 할인 전 총 주문 금액이 12만원 이상일 경우, 샴페인 1개를 증정품으로 지급
+  #checkGiveaway() {
+    if (!this.#totalPrice) {
+      this.#calculateTotalPrice();
+    }
+
+    if (this.#totalPrice >= 120000) {
+      this.#giveaway = ['샴페인', '1개'];
+    }
   }
 
 }
