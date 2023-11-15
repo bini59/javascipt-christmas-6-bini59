@@ -12,6 +12,8 @@ class Model {
 
   #benefits = [];
 
+  #totalBenefitPrice = 0;
+
   setDate(date) {
     if (!Validator.dateValidate(date)) {
       return false;
@@ -138,6 +140,17 @@ class Model {
     }
 
     return this.#benefits;
+  }
+
+  #calculateTotalBenefitPrice() {
+    this.#benefits.forEach((benefit) => {
+      this.#totalBenefitPrice += benefit[1];
+    });
+  }
+
+  getTotalBenefitPrice() {
+    this.#calculateTotalBenefitPrice();
+    return this.#totalBenefitPrice;
   }
 }
 
