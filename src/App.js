@@ -1,9 +1,17 @@
 import InputView from './InputView.js';
+import Model from './Model.js';
+import errhandler from './modules/errhandler.js';
 
 class App {
 
+  #model = new Model();
+
   async inputDate() {
-    const date = await InputView.readDate();
+    let date = await InputView.readDate();
+    if (!this.#model.setDate(date)) {
+      errhandler.inputDateError();
+      date = await this.inputDate();
+    }
     return date;
   }
 
@@ -13,10 +21,7 @@ class App {
   }
 
   async run() {
-    const date = await this.inputDate();
-    const menus = await this.inputMenus();
-    console.log(date);
-    console.log(menus);
+    await this.inputDate();
   }
 }
 
