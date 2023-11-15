@@ -81,6 +81,15 @@ describe('Model 테스트', () => {
     expect(model.getBenefit()).toContainEqual(['증정 이벤트', 25000]);
   })
 
-  
+  test('혜택 금액 테스트', () => {
+    const model = new Model();
+    model.setDate('24');
+    model.setMenus('타파스-1,제로콜라-1,레드와인-3,초코케이크-1,아이스크림-1,티본스테이크-2,해산물파스타-3');
+
+    model.getGiveaway();
+    model.getBenefit();
+
+    expect(model.getTotalBenefitPrice()).toEqual(1000+2023*2+25000+3300);
+  })
 
 });
