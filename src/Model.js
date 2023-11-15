@@ -43,6 +43,11 @@ class Model {
     this.#totalPrice = totalPrice;
   }
 
+  getTotalPrice() {
+    this.#calculateTotalPrice();
+    return this.#totalPrice;
+  }
+
 }
 
 export default Model;
