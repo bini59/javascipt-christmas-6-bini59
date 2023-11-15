@@ -1,9 +1,12 @@
 import Validator from './modules/validate.js';
+import Menu from './data/menus.js';
 
 class Model {
   #date;
 
   #menus;
+
+  #totalPrice;
 
   setDate(date) {
     if (!Validator.dateValidate(date)) {
@@ -24,6 +27,11 @@ class Model {
     this.#menus = menuList;
     return true;
   }
+
+  getMenus() {
+    return this.#menus;
+  }
+
 }
 
 export default Model;

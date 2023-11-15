@@ -1,5 +1,6 @@
 import InputView from './InputView.js';
 import Model from './Model.js';
+import OutputView from './OutputView.js';
 import errhandler from './modules/errhandler.js';
 
 class App {
@@ -27,6 +28,9 @@ class App {
   async run() {
     await this.inputDate();
     await this.inputMenus();
+
+    const menus = this.#model.getMenus();
+    OutputView.printMenu(menus);
   }
 }
 
