@@ -33,6 +33,15 @@ const Menu = {
       return true;
     }
     return false;
+  },
+  getPrice(menu) {
+    let price = 0;
+    Object.keys(this).forEach((key) => {
+      if (this[key][menu]) {
+        price = this[key][menu];
+      }
+    });
+    return price;
   }
 }
 

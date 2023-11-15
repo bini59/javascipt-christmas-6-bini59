@@ -32,6 +32,17 @@ class Model {
     return this.#menus;
   }
 
+  #calculateTotalPrice() {
+    let totalPrice = 0;
+    this.#menus.forEach((menu) => {
+      const [menuName, count] = menu;
+      if (Menu.isMenu(menuName)) {
+        totalPrice += Menu.getPrice(menuName) * count;
+      }
+    });
+    this.#totalPrice = totalPrice;
+  }
+
 }
 
 export default Model;
