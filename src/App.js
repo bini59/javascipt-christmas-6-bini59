@@ -50,6 +50,11 @@ class App {
     OutputView.printFinalPrice(finalPrice);
   }
 
+  printBadge() {
+    const badge = this.#model.getBadge();
+    OutputView.printBadge(badge);
+  }
+
   async run() {
     await this.inputDate();
     await this.inputMenus();
@@ -62,6 +67,7 @@ class App {
     this.printBenefit();
     this.printBenefitPrice();
     this.printFinalPrice();
+    this.printBadge();
   }
 }
 

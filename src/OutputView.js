@@ -42,6 +42,15 @@ const OutputView = {
     printFinalPrice(finalPrice) {
         Console.print('<할인 후 예상 결제 금액>');
         Console.print(`${utils.getMoneyString(finalPrice)}원`);
+    },
+
+    printBadge(badge) {
+        Console.print('<12월 이벤트 배지>');
+        if (badge === undefined) {
+            Console.print('없음');
+            return;
+        }
+        Console.print(badge);
     }
 }
 
