@@ -35,6 +35,11 @@ class App {
     OutputView.printGiveaway(giveaway);
   }
 
+  printBenefit() {
+    const benefits = this.#model.getBenefit();
+    OutputView.printBenefit(benefits);
+  }
+
   async run() {
     await this.inputDate();
     await this.inputMenus();
@@ -44,6 +49,7 @@ class App {
 
     this.printTotalPrice();
     this.printGiveaway();
+    this.printBenefit();
   }
 }
 

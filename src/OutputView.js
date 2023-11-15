@@ -21,6 +21,17 @@ const OutputView = {
             return;
         }
         Console.print(`${giveaway[0]} ${giveaway[1]}개`);
+    },
+
+    printBenefit(benefits) {
+        Console.print('<혜택 내역>');
+        if (benefits.length === 0) {
+            Console.print('없음');
+            return;
+        }
+        for (let i = 0; i < benefits.length; i += 1) {
+            Console.print(`${benefits[i][0]}: -${utils.getMoneyString(benefits[i][1])}원`);
+        }
     }
 }
 
