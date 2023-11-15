@@ -75,15 +75,15 @@ class Model {
 
   // 25일 이전에 주문 시, 크리스마스 디데이 할인 적용
   #DDayEvent() {
-    if (this.#date > 25) return false;
+    if (this.#date > 25) return this;
     this.#benefits.push(['크리스마스 디데이 할인', (this.#date-1)*100 + 1000])
-    return true;
+    return this;
   }
 
   // 금,토를 제외한 주중에 구매시 디저트 메뉴를 개당 2023원씩 할인
   // 12월 1일은 금요일
   #weekDayEvent() {
-    if (this.#date % 7 === 1 || this.#date % 7 === 2) return false;
+    if (this.#date % 7 === 1 || this.#date % 7 === 2) return this;
 
     let dessertCount = 0;
     this.#menus.forEach((menu) => {
@@ -92,9 +92,9 @@ class Model {
         dessertCount += Number(count);
       }
     });
-    if (dessertCount === 0) return false;
+    if (dessertCount === 0) return this;
     this.#benefits.push(['평일 할인', dessertCount * 2023]);
-    return true;
+    return this;
   }
 
   // 금,토에 구매시 메인 메뉴를 개당 2023원씩 할인
@@ -108,11 +108,11 @@ class Model {
           mainCount += Number(count);
         }
       });
-      if (mainCount === 0) return false;
+      if (mainCount === 0) return this;
       this.#benefits.push(['주말 할인', mainCount * 2023]);
-      return true;
+      return this;
     }
-    return false;
+    return this;
   }
 
   // 특별 할인, 25일과 일요일에는 총 주문금액에서 1000원 할인
@@ -120,9 +120,9 @@ class Model {
   #specialEvent() {
     if (this.#date === 25 || this.#date % 7 === 3) {
       this.#benefits.push(['특별 할인', 1000]);
-      return true;
+      return this;
     }
-    return false;
+    return this;
   }
 
   getBenefit() {
@@ -132,11 +132,12 @@ class Model {
 
     if ((this.#totalPrice < 10000)) return [];
 
-    this.#DDayEvent();
-    this.#weekDayEvent();
-    this.#weekendEvent();
-    this.#specialEvent();
-
+    this
+      .#DDayEvent()
+      .#weekDayEvent()
+      .#weekendEvent()
+      .#specialEvent();
+      
     if (this.#giveaway) {
       this.#benefits.push(['증정 이벤트', Menu.getPrice(this.#giveaway[0])]);
     }
