@@ -108,6 +108,16 @@ class Model {
     }
     return false;
   }
+
+  // 특별 할인, 25일과 일요일에는 총 주문금액에서 1000원 할인
+  // 12월 1일은 금요일
+  #specialEvent() {
+    if (this.#date === 25 || this.#date % 7 === 3) {
+      this.#benefits.push(['특별 할인', 1000]);
+      return true;
+    }
+    return false;
+  }
 }
 
 export default Model;
