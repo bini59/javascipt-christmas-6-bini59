@@ -37,6 +37,11 @@ const OutputView = {
     printBenefitPrice(price) {
         Console.print('<총혜택 금액>');
         Console.print(`${utils.getMoneyString(price)}원`);
+    },
+
+    printFinalPrice(finalPrice) {
+        Console.print('<할인 후 예상 결제 금액>');
+        Console.print(`${utils.getMoneyString(finalPrice)}원`);
     }
 }
 

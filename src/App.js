@@ -45,6 +45,11 @@ class App {
     OutputView.printBenefitPrice(benefitPrice);
   }
 
+  printFinalPrice() {
+    const finalPrice = this.#model.getTotalPriceWithBenefit();
+    OutputView.printFinalPrice(finalPrice);
+  }
+
   async run() {
     await this.inputDate();
     await this.inputMenus();
@@ -56,6 +61,7 @@ class App {
     this.printGiveaway();
     this.printBenefit();
     this.printBenefitPrice();
+    this.printFinalPrice();
   }
 }
 
