@@ -10,7 +10,7 @@ class Model {
 
   #giveaway;
 
-  #benefits;
+  #benefits = [];
 
   setDate(date) {
     if (!Validator.dateValidate(date)) {
@@ -85,9 +85,10 @@ class Model {
     this.#menus.forEach((menu) => {
       const [menuName, count] = menu;
       if (Menu.isDessert(menuName)) {
-        dessertCount += count;
+        dessertCount += Number(count);
       }
     });
+    if (dessertCount === 0) return false;
     this.#benefits.push(['평일 할인', dessertCount * 2023]);
     return true;
   }
@@ -100,9 +101,10 @@ class Model {
       this.#menus.forEach((menu) => {
         const [menuName, count] = menu;
         if (Menu.isMain(menuName)) {
-          mainCount += count;
+          mainCount += Number(count);
         }
       });
+      if (mainCount === 0) return false;
       this.#benefits.push(['주말 할인', mainCount * 2023]);
       return true;
     }
@@ -117,6 +119,25 @@ class Model {
       return true;
     }
     return false;
+  }
+
+  getBenefit() {
+    if (!this.#totalPrice) {
+      this.#calculateTotalPrice();
+    }
+
+    if ((this.#totalPrice < 10000)) return [];
+
+    this.#DDayEvent();
+    this.#weekDayEvent();
+    this.#weekendEvent();
+    this.#specialEvent();
+
+    if (this.#giveaway) {
+      this.#benefits.push(['증정 이벤트', Menu.getPrice(this.#giveaway[0])]);
+    }
+
+    return this.#benefits;
   }
 }
 
