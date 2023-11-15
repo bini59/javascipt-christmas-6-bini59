@@ -62,6 +62,11 @@ class Model {
     }
   }
 
+  getGiveaway() {
+    this.#checkGiveaway();
+    return this.#giveaway;
+  }
+
 }
 
 export default Model;
