@@ -92,6 +92,22 @@ class Model {
     return true;
   }
 
+  // 금,토에 구매시 메인 메뉴를 개당 2023원씩 할인
+  // 12월 1일은 금요일
+  #weekendEvent() {
+    if (this.#date % 7 === 1 || this.#date % 7 === 2) {
+      let mainCount = 0;
+      this.#menus.forEach((menu) => {
+        const [menuName, count] = menu;
+        if (Menu.isMain(menuName)) {
+          mainCount += count;
+        }
+      });
+      this.#benefits.push(['주말 할인', mainCount * 2023]);
+      return true;
+    }
+    return false;
+  }
 }
 
 export default Model;

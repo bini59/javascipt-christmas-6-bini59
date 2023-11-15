@@ -40,6 +40,12 @@ const Menu = {
     }
     return false;
   },
+  isMain(menu) {
+    if (this.main[menu]) {
+      return true;
+    }
+    return false;
+  },
   getPrice(menu) {
     let price = 0;
     Object.keys(this).forEach((key) => {
