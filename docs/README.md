@@ -40,7 +40,7 @@
 - [x] #주말 할인 및 적용 method
 - [x] #특별 할인 및 적용 method
 - [x] #증정 메뉴 method
-- [ ] #이벤트 배지 method
+- [x] #이벤트 배지 method
 
 - [x] (get) 총 주문 금액
 - [x] (get) 증정 메뉴 목록

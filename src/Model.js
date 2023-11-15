@@ -14,6 +14,8 @@ class Model {
 
   #totalBenefitPrice = 0;
 
+  #badge;
+
   setDate(date) {
     if (!Validator.dateValidate(date)) {
       return false;
@@ -155,6 +157,22 @@ class Model {
 
   getTotalPriceWithBenefit() {
     return this.#totalPrice - this.#totalBenefitPrice;
+  }
+
+  #calcualteBadge() {
+    if (this.#totalBenefitPrice >= 5000) {
+      this.#badge = '별';
+      return true;
+    }
+    if (this.#totalBenefitPrice >= 10000) {
+      this.#badge = '트리';
+      return true;
+    }
+    if (this.#totalBenefitPrice >= 20000) {
+      this.#badge = '산타';
+      return true;
+    }
+    return false;
   }
 }
 
