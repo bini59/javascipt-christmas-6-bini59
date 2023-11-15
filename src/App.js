@@ -25,12 +25,19 @@ class App {
     return menus;
   }
 
+  printTotalPrice() {
+    const totalPrice = this.#model.getTotalPrice();
+    OutputView.printTotalPrice(totalPrice);
+  }
+
   async run() {
     await this.inputDate();
     await this.inputMenus();
 
     const menus = this.#model.getMenus();
     OutputView.printMenu(menus);
+    
+    this.printTotalPrice();
   }
 }
 
