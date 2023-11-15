@@ -34,6 +34,12 @@ const Menu = {
     }
     return false;
   },
+  isDessert(menu) {
+    if (this.dessert[menu]) {
+      return true;
+    }
+    return false;
+  },
   getPrice(menu) {
     let price = 0;
     Object.keys(this).forEach((key) => {

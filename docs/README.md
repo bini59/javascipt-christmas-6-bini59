@@ -36,7 +36,7 @@
 
 - [x] #총 금액 계산 method
 - [x] #D-Day 할인 및 적용 method
-- [ ] #평일 할인 및 적용 method
+- [x] #평일 할인 및 적용 method
 - [ ] #주말 할인 및 적용 method
 - [ ] #특별 할인 및 적용 method
 - [x] #증정 메뉴 method

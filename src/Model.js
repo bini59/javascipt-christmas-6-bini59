@@ -76,8 +76,20 @@ class Model {
     return true;
   }
 
+  // 금,토를 제외한 주중에 구매시 디저트 메뉴를 개당 2023원씩 할인
+  // 12월 1일은 금요일
   #weekDayEvent() {
+    if (this.#date % 7 === 1 || this.#date % 7 === 2) return false;
 
+    let dessertCount = 0;
+    this.#menus.forEach((menu) => {
+      const [menuName, count] = menu;
+      if (Menu.isDessert(menuName)) {
+        dessertCount += count;
+      }
+    });
+    this.#benefits.push(['평일 할인', dessertCount * 2023]);
+    return true;
   }
 
 }
