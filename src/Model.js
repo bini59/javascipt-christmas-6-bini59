@@ -160,19 +160,24 @@ class Model {
   }
 
   #calcualteBadge() {
-    if (this.#totalBenefitPrice >= 5000) {
-      this.#badge = '별';
+    if (this.#totalBenefitPrice >= 20000) {
+      this.#badge = '산타';
       return true;
     }
     if (this.#totalBenefitPrice >= 10000) {
       this.#badge = '트리';
       return true;
     }
-    if (this.#totalBenefitPrice >= 20000) {
-      this.#badge = '산타';
+    if (this.#totalBenefitPrice >= 5000) {
+      this.#badge = '별';
       return true;
     }
     return false;
+  }
+
+  getBadge() {
+    this.#calcualteBadge();
+    return this.#badge;
   }
 }
 

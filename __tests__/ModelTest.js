@@ -105,4 +105,60 @@ describe('Model 테스트', () => {
     expect(model.getTotalPriceWithBenefit()).toEqual(5000+3000+60000*3+15000+5000+55000*2+35000*3-1000-2023*2-25000-3300);
   })
 
+  test('이벤트 배지 테스트(없음)', () => {
+
+    const model = new Model();
+    model.setDate('26')
+    model.setMenus('타파스-1,제로콜라-1');
+
+    model.getGiveaway();
+    model.getBenefit();
+    model.getTotalBenefitPrice();
+    model.getTotalPriceWithBenefit();
+
+    expect(model.getBadge()).toEqual(undefined);
+  })
+
+  test('이벤트 배지 테스트(별)', () => {
+      
+    const model = new Model();
+    model.setDate('24')
+    model.setMenus('타파스-1,제로콜라-1,초코케이크-1');
+
+    model.getGiveaway();
+    model.getBenefit();
+    model.getTotalBenefitPrice();
+    model.getTotalPriceWithBenefit();
+
+    expect(model.getBadge()).toEqual('별');
+  });
+
+  test('이벤트 배지 테스트(트리)', () => {
+      
+    const model = new Model();
+    model.setDate('24')
+    model.setMenus('타파스-1,제로콜라-1,초코케이크-3');
+
+    model.getGiveaway();
+    model.getBenefit();
+    model.getTotalBenefitPrice();
+    model.getTotalPriceWithBenefit();
+
+    expect(model.getBadge()).toEqual('트리');
+  });
+
+  test('이벤트 배지 테스트(산타)', () => {
+      
+    const model = new Model();
+    model.setDate('24')
+    model.setMenus('타파스-1,제로콜라-1,초코케이크-10');
+
+    model.getGiveaway();
+    model.getBenefit();
+    model.getTotalBenefitPrice();
+    model.getTotalPriceWithBenefit();
+
+    expect(model.getBadge()).toEqual('산타');
+  });
+
 });
