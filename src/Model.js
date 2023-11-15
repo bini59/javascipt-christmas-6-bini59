@@ -10,6 +10,8 @@ class Model {
 
   #giveaway;
 
+  #benefits;
+
   setDate(date) {
     if (!Validator.dateValidate(date)) {
       return false;
@@ -65,6 +67,17 @@ class Model {
   getGiveaway() {
     this.#checkGiveaway();
     return this.#giveaway;
+  }
+
+  // 25일 이전에 주문 시, 크리스마스 디데이 할인 적용
+  #DDayEvent() {
+    if (this.#date > 25) return false;
+    this.#benefits.push(['크리스마스 디데이 할인', (this.#date-1)*100 + 1000])
+    return true;
+  }
+
+  #weekDayEvent() {
+
   }
 
 }
